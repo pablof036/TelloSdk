@@ -11,51 +11,46 @@ import java.util.function.BiConsumer;
  */
 public class Connection {
     private boolean connected;
-    private final DatagramSocket commandSocket;
-    private final BiConsumer<State, Throwable> onStateReceive;
+    private DatagramSocket commandSocket;
     private StateServer stateServer;
-
-    public Connection(BiConsumer<State, Throwable> onStateReceive) {
-        try {
-            this.commandSocket = new DatagramSocket();
-            this.commandSocket.setSoTimeout(2000);
-        } catch (SocketException e) {
-            throw new RuntimeException(e);
-        }
-        this.onStateReceive = onStateReceive;
-    }
 
     public void connect() {
         try {
+            commandSocket = new DatagramSocket();
+            commandSocket.setSoTimeout(5000);
             commandSocket.connect(InetAddress.getByName("192.168.10.1"), 8889);
-        } catch (UnknownHostException e) {
+        } catch (UnknownHostException | SocketException e) {
             throw new RuntimeException(e);
         }
 
-        if (onStateReceive != null) {
-            try {
-                stateServer = new StateServer(onStateReceive);
-                stateServer.start();
-            } catch (SocketException e) {
-                throw new RuntimeException(e);
-            }
-        }
         connected = true;
     }
 
     public void disconnect() {
-        commandSocket.disconnect();
         commandSocket.close();
+        stopReceivingState();
+        connected = false;
+    }
+
+    public void startReceivingState(BiConsumer<State, Throwable> stateCallback) {
+        try {
+            stateServer = new StateServer(stateCallback);
+        } catch (SocketException e) {
+            throw new RuntimeException(e);
+        }
+        stateServer.start();
+    }
+
+    public void stopReceivingState() {
         if (stateServer != null) {
             stateServer.interrupt();
             try {
                 stateServer.join();
             } catch (InterruptedException e) {
-                connected = false;
                 throw new RuntimeException(e);
             }
+            stateServer = null;
         }
-        connected = false;
     }
 
     public CompletableFuture<Void> scheduleCommand(String message) {

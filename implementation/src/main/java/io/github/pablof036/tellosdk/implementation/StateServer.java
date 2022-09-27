@@ -28,15 +28,16 @@ class StateServer extends Thread {
             DatagramPacket message = new DatagramPacket(new byte[1024], 1024);
             try {
                 socket.receive(message);
-                ForkJoinPool.commonPool().submit(() -> {
+                ForkJoinPool.commonPool().execute(() -> {
                     io.github.pablof036.tellosdk.implementation.State state = io.github.pablof036.tellosdk.implementation.State.parse(new String(message.getData(), 0, message.getLength(), StandardCharsets.UTF_8));
                     onReceive.accept(state, null);
                 });
             } catch (IOException e) {
-                onReceive.accept(null, e);
+                ForkJoinPool.commonPool().execute(() -> {
+                    onReceive.accept(null, e);
+                });
             }
         }
-        socket.disconnect();
         socket.close();
     }
 }

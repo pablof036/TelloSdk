@@ -85,10 +85,10 @@ public class State {
     }
 
     private static Map<String, String> mapStateString(String stateStr) {
-        String withoutSemicolon = stateStr.replaceAll(";", "");
+        String withoutSemicolon = stateStr.replaceAll(";", ":");
         String[] splitted = withoutSemicolon.split(":");
         Map<String, String> mapped = new HashMap<>();
-        for (int i = 0; i < splitted.length; i += 2) {
+        for (int i = 0; i < splitted.length - 1; i += 2) {
             mapped.put(splitted[i], splitted[i + 1]);
         }
         return mapped;

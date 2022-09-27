@@ -4,10 +4,8 @@ import io.github.pablof036.tellosdk.implementation.Connection;
 import io.github.pablof036.tellosdk.implementation.State;
 
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 
 /**
  * Interface with Tello Drone. Schedules command and receives state updates.
@@ -16,10 +14,9 @@ import java.util.function.BiConsumer;
  */
 public class TelloApi {
 
-    private final List<BiConsumer<State, Throwable>> stateListeners = new ArrayList<>();
-    private final Connection connection = new Connection((s, t) -> {
-        stateListeners.forEach(c -> c.accept(s, t));
-    });
+    private final Listener<State> stateListener = new Listener<>();
+    private final Listener<Throwable> disconnectionListener = new Listener<>();
+    private final Connection connection = new Connection();
 
     /**
      * Opens connection with drone and enters SDK mode.
@@ -30,11 +27,20 @@ public class TelloApi {
                     connection.connect();
                     connection.scheduleCommand("command").join();
                     return (Void) null;
-                }).whenComplete((n, t) -> {
-                    if (t != null) {
-                        connection.disconnect();
+        }).whenComplete((u, t) -> {
+            if (t != null) {
+                connection.disconnect();
+            } else {
+                connection.startReceivingState((s, thr) -> {
+                    if (s != null) {
+                        stateListener.push(s);
+                    } else {
+                        disconnect();
+                        disconnectionListener.push(thr);
                     }
                 });
+            }
+        });
     }
 
     /**
@@ -50,8 +56,8 @@ public class TelloApi {
      *
      * @param listener callback
      */
-    public void addStateListener(BiConsumer<State, Throwable> listener) {
-        stateListeners.add(listener);
+    public void addStateListener(Consumer<State> listener) {
+        stateListener.addListener(listener);
     }
 
     /**
@@ -59,8 +65,26 @@ public class TelloApi {
      *
      * @param listener listener to be removed
      */
-    public void removeStateListener(BiConsumer<State, Throwable> listener) {
-        stateListeners.remove(listener);
+    public void removeStateListener(Consumer<State> listener) {
+        stateListener.removeListener(listener);
+    }
+
+    /**
+     * Adds a callback that will be used if a sudden disconnection occurs.
+     *
+     * @param listener callback
+     */
+    public void addDisconnectionListener(Consumer<Throwable> listener) {
+        disconnectionListener.addListener(listener);
+    }
+
+    /**
+     * Removes a disconnection listener.
+     *
+     * @param listener listener to be removed
+     */
+    public void removeDisconnectionListener(Consumer<Throwable> listener) {
+        disconnectionListener.removeListener(listener);
     }
 
     /**
