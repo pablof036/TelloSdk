@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8a7478e2-d065-4ffe-8528-6081e6ba4446" name="Changes" comment="maven central setup">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/io/github/pablof036/tellosdk/api/TelloApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/io/github/pablof036/tellosdk/api/TelloApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/implementation/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/implementation/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/implementation/src/main/java/io/github/pablof036/tellosdk/implementation/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/implementation/src/main/java/io/github/pablof036/tellosdk/implementation/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/implementation/src/main/java/io/github/pablof036/tellosdk/implementation/CommandDispatcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/implementation/src/main/java/io/github/pablof036/tellosdk/implementation/CommandDispatcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/implementation/src/main/java/io/github/pablof036/tellosdk/implementation/Connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/implementation/src/main/java/io/github/pablof036/tellosdk/implementation/Connection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/implementation/src/main/java/io/github/pablof036/tellosdk/implementation/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/implementation/src/main/java/io/github/pablof036/tellosdk/implementation/State.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/implementation/src/main/java/io/github/pablof036/tellosdk/implementation/StateServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/implementation/src/main/java/io/github/pablof036/tellosdk/implementation/StateServer.java" afterDir="false" />
+    <list default="true" id="8a7478e2-d065-4ffe-8528-6081e6ba4446" name="Changes" comment="version bump to 1.1.1 to fix versioning mess">
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -66,7 +57,7 @@
       <updated>1664235189661</updated>
       <workItem from="1664235191035" duration="6007000" />
       <workItem from="1664241239391" duration="5606000" />
-      <workItem from="1664247146943" duration="72000" />
+      <workItem from="1664247146943" duration="157000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commmit">
       <created>1664241382232</created>
@@ -89,7 +80,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664244844143</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="version bump to 1.1.1 to fix versioning mess">
+      <created>1664247251436</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1664247251436</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -109,7 +107,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Commmit" />
     <MESSAGE value="maven central setup" />
-    <option name="LAST_COMMIT_MESSAGE" value="maven central setup" />
+    <MESSAGE value="version bump to 1.1.1 to fix versioning mess" />
+    <option name="LAST_COMMIT_MESSAGE" value="version bump to 1.1.1 to fix versioning mess" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
