@@ -6,7 +6,31 @@
 
     <groupId>io.github.pablof036.tellosdk</groupId>
     <artifactId>implementation</artifactId>
-    <version>0.1.0</version>
+    <version>0.1.1</version>
+
+    <name>TelloSDK</name>
+    <description>This library provides a basic API for communicating with Ryze's Tello drones</description>
+    <url>https://github.com/pablof036/TelloSdk</url>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://www.opensource.org/licenses/mit-license.php</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Pablo Franco</name>
+            <email>pablofrancom36@gmail.com</email>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/pablof036/TelloSdk.git</connection>
+        <developerConnection>scm:git:ssh://github.com/pablof036/TelloSdk.git</developerConnection>
+        <url>https://github.com/pablof036/TelloSdk/tree/master</url>
+    </scm>
 
     <distributionManagement>
         <snapshotRepository>
