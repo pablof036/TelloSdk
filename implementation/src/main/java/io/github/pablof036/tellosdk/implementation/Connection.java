@@ -1,5 +1,8 @@
 package io.github.pablof036.tellosdk.implementation;
 
+import java.io.IOException;
+import java.net.*;
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.*;
 import java.util.function.BiConsumer;
 
@@ -8,11 +11,17 @@ import java.util.function.BiConsumer;
  */
 public class Connection {
     private boolean connected;
-    private CommandDispatcher commandDispatcher = new CommandDispatcher();
+    private final DatagramSocket commandSocket;
     private final BiConsumer<State, Throwable> onStateReceive;
     private StateServer stateServer;
 
     public Connection(BiConsumer<State, Throwable> onStateReceive) {
+        try {
+            this.commandSocket = new DatagramSocket();
+            this.commandSocket.setSoTimeout(2000);
+        } catch (SocketException e) {
+            throw new RuntimeException(e);
+        }
         this.onStateReceive = onStateReceive;
         if (onStateReceive != null) {
             stateServer = new StateServer(onStateReceive);
@@ -20,7 +29,11 @@ public class Connection {
     }
 
     public void connect() {
-        commandDispatcher.start();
+        try {
+            commandSocket.connect(InetAddress.getByName("192.168.10.1"), 8889);
+        } catch (UnknownHostException e) {
+            throw new RuntimeException(e);
+        }
         if (stateServer != null) {
             stateServer.start();
         }
@@ -28,49 +41,50 @@ public class Connection {
     }
 
     public void disconnect() {
-        commandDispatcher.interrupt();
+        commandSocket.disconnect();
         stateServer.interrupt();
 
         try {
-            commandDispatcher.join();
             stateServer.join();
-            commandDispatcher = new CommandDispatcher();
             stateServer = new StateServer(onStateReceive);
             connected = false;
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
+
     public CompletableFuture<Void> scheduleCommand(String message) {
         return CompletableFuture.supplyAsync(() -> {
-            scheduleCommandAndWait(message);
+            sendCommand(message);
             return null;
         });
     }
 
     public CompletableFuture<String> scheduleReadCommand(String message) {
-        return CompletableFuture.supplyAsync(() -> scheduleCommandAndWait(message));
+        return CompletableFuture.supplyAsync(() -> sendCommand(message));
     }
 
-    private String scheduleCommandAndWait(String message) {
+    private synchronized String sendCommand(String message) {
         if (!connected) {
             throw new RuntimeException("Drone not connected");
         }
 
-        Command command = new Command(message);
-        commandDispatcher.queue.add(command);
+        byte[] bytes = message.getBytes(StandardCharsets.UTF_8);
+        String responseMessage;
+
         try {
-            synchronized (command) {
-                command.wait();
-            }
-        } catch (InterruptedException e) {
+            commandSocket.send(new DatagramPacket(bytes, bytes.length));
+            DatagramPacket response = new DatagramPacket(new byte[1024], 1024);
+            commandSocket.receive(response);
+            responseMessage = new String(response.getData(), 0, response.getLength(), StandardCharsets.UTF_8);
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-        if (command.getThrowable() != null) {
-            throw new RuntimeException(command.getThrowable());
+        if (responseMessage.equals("error")) {
+            throw new RuntimeException("command failed");
         }
 
-        return command.getResponse();
+        return responseMessage;
     }
 }

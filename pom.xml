@@ -6,7 +6,7 @@
 
     <groupId>io.github.pablof036.tellosdk</groupId>
     <artifactId>TelloSdk</artifactId>
-    <version>1.1.1</version>
+    <version>1.1.2</version>
 
     <name>TelloSDK</name>
     <description>This library provides a basic API for communicating with Ryze's Tello drones</description>
