@@ -7,6 +7,9 @@ import java.util.Objects;
 import java.util.concurrent.ForkJoinPool;
 import java.util.function.BiConsumer;
 
+/**
+ * Receives state updates from drone
+ */
 class StateServer extends Thread {
     private final DatagramSocket socket;
     private final BiConsumer<io.github.pablof036.tellosdk.implementation.State, Throwable> onReceive;

@@ -1,5 +1,8 @@
 package io.github.pablof036.tellosdk.implementation;
 
+/**
+ * A network command
+ */
 class Command {
     private final String message;
     private String response;

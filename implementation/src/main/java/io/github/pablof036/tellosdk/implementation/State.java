@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+/**
+ * Stores state about drone
+ */
 public class State {
     private final Integer pitch;
     private final Integer roll;

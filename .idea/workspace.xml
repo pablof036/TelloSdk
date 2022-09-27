@@ -7,7 +7,13 @@
     <list default="true" id="8a7478e2-d065-4ffe-8528-6081e6ba4446" name="Changes" comment="maven central setup">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/io/github/pablof036/tellosdk/api/TelloApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/io/github/pablof036/tellosdk/api/TelloApi.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/implementation/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/implementation/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/src/main/java/io/github/pablof036/tellosdk/implementation/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/implementation/src/main/java/io/github/pablof036/tellosdk/implementation/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/src/main/java/io/github/pablof036/tellosdk/implementation/CommandDispatcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/implementation/src/main/java/io/github/pablof036/tellosdk/implementation/CommandDispatcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/src/main/java/io/github/pablof036/tellosdk/implementation/Connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/implementation/src/main/java/io/github/pablof036/tellosdk/implementation/Connection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/src/main/java/io/github/pablof036/tellosdk/implementation/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/implementation/src/main/java/io/github/pablof036/tellosdk/implementation/State.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/src/main/java/io/github/pablof036/tellosdk/implementation/StateServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/implementation/src/main/java/io/github/pablof036/tellosdk/implementation/StateServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,16 +38,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/yo/Documents/TelloSdk",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.notifications"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/yo/Documents/TelloSdk&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.notifications&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/api/src/main/java/io/github/pablof036/tellosdk/api" />
@@ -49,21 +55,6 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/implementation/src/main/java/io/github/pablof036/tellosdk/implementation" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="TelloSdk" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="TelloSdk" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -74,7 +65,8 @@
       <option name="presentableId" value="Default" />
       <updated>1664235189661</updated>
       <workItem from="1664235191035" duration="6007000" />
-      <workItem from="1664241239391" duration="3598000" />
+      <workItem from="1664241239391" duration="5606000" />
+      <workItem from="1664247146943" duration="72000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commmit">
       <created>1664241382232</created>
@@ -90,7 +82,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664243930758</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="maven central setup">
+      <created>1664244844143</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1664244844143</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

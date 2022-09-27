@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
 
+/**
+ * Interface with Tello Drone. Schedules command and receiver state updates.
+ */
 public class TelloApi {
 
     private final List<BiConsumer<State, Throwable>> stateListeners = new ArrayList<>();

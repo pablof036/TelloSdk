@@ -6,6 +6,9 @@ import java.nio.charset.StandardCharsets;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
+/**
+ * Sends {@link Command} to Drone
+ */
 class CommandDispatcher extends Thread {
     protected final BlockingQueue<Command> queue;
     protected final DatagramSocket socket;

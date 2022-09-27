@@ -3,8 +3,10 @@ package io.github.pablof036.tellosdk.implementation;
 import java.util.concurrent.*;
 import java.util.function.BiConsumer;
 
+/**
+ * Manages connection to Tello Drone
+ */
 public class Connection {
-
     private boolean connected;
     private CommandDispatcher commandDispatcher = new CommandDispatcher();
     private final BiConsumer<State, Throwable> onStateReceive;
