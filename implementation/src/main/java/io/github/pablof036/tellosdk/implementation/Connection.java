@@ -23,9 +23,6 @@ public class Connection {
             throw new RuntimeException(e);
         }
         this.onStateReceive = onStateReceive;
-        if (onStateReceive != null) {
-            stateServer = new StateServer(onStateReceive);
-        }
     }
 
     public void connect() {
@@ -34,7 +31,12 @@ public class Connection {
         } catch (UnknownHostException e) {
             throw new RuntimeException(e);
         }
-        if (stateServer != null) {
+        if (onStateReceive != null) {
+            try {
+                stateServer = new StateServer(onStateReceive);
+            } catch (SocketException e) {
+                throw new RuntimeException(e);
+            }
             stateServer.start();
         }
         connected = true;
@@ -42,15 +44,18 @@ public class Connection {
 
     public void disconnect() {
         commandSocket.disconnect();
-        stateServer.interrupt();
+        if (stateServer != null) {
+            stateServer.interrupt();
 
-        try {
-            stateServer.join();
-            stateServer = new StateServer(onStateReceive);
-            connected = false;
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            try {
+                stateServer.join();
+                stateServer.disconnectSocket();
+            } catch (InterruptedException e) {
+                connected = false;
+                throw new RuntimeException(e);
+            }
         }
+        connected = false;
     }
 
     public CompletableFuture<Void> scheduleCommand(String message) {

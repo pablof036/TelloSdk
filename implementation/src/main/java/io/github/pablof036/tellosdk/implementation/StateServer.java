@@ -14,17 +14,17 @@ class StateServer extends Thread {
     private final DatagramSocket socket;
     private final BiConsumer<io.github.pablof036.tellosdk.implementation.State, Throwable> onReceive;
 
-    public StateServer(BiConsumer<io.github.pablof036.tellosdk.implementation.State, Throwable> onReceive) {
+    public StateServer(BiConsumer<io.github.pablof036.tellosdk.implementation.State, Throwable> onReceive) throws SocketException {
         Objects.requireNonNull(onReceive);
         this.onReceive = onReceive;
 
-        try {
-            socket = new DatagramSocket(8890);
-            socket.setSoTimeout(250);
-        } catch (SocketException e) {
-            throw new RuntimeException(e);
-        }
+        socket = new DatagramSocket(8890);
+        socket.setSoTimeout(250);
+    }
 
+    public void disconnectSocket() {
+        socket.disconnect();
+        socket.close();
     }
 
     @Override
@@ -42,5 +42,6 @@ class StateServer extends Thread {
             }
         }
         socket.disconnect();
+        socket.close();
     }
 }

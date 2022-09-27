@@ -21,13 +21,16 @@ public class TelloApi {
 
     /**
      * Opens connection with drone and enters SDK mode.
+     * Will be completed with an exception if the connection failed.
      */
     public CompletableFuture<Void> connect() {
-        connection.connect();
-        return connection.scheduleCommand("command")
-                .whenComplete((m, t) -> {
-                    if (t != null)  {
-                        disconnect();
+        return CompletableFuture.supplyAsync(() -> {
+                    connection.connect();
+                    return null;
+                }).thenCompose(p -> connection.scheduleCommand("command"))
+                .whenComplete((n, t) -> {
+                    if (t != null) {
+                        connection.disconnect();
                     }
                 });
     }
@@ -42,6 +45,7 @@ public class TelloApi {
     /**
      * Adds a callback that will be used each time a state update is received.
      * The callback will be passed the most recent parsed state and, if any exception arose, a throwable parameter with that exception.
+     *
      * @param listener callback
      */
     public void addStateListener(BiConsumer<State, Throwable> listener) {
@@ -50,6 +54,7 @@ public class TelloApi {
 
     /**
      * Removes a state update listener.
+     *
      * @param listener listener to be removed
      */
     public void removeStateListener(BiConsumer<State, Throwable> listener) {
@@ -58,6 +63,7 @@ public class TelloApi {
 
     /**
      * Read Command. Get current drone speed in cm/s.
+     *
      * @return drone speed in cm/s (10-100).
      */
     public CompletableFuture<Integer> getSpeed() {
@@ -67,6 +73,7 @@ public class TelloApi {
 
     /**
      * Read command. Get current battery level.
+     *
      * @return battery level (0-100).
      */
     public CompletableFuture<Integer> getBatteryLevel() {
@@ -80,6 +87,7 @@ public class TelloApi {
         }
         return connection.scheduleCommand(String.format("%s %s", command, distance));
     }
+
     private CompletableFuture<Void> rotationCommand(String command, int degrees) {
         if (degrees < 0 || degrees > 360) {
             throw new IllegalArgumentException("rotation must be between 0 and 360 degrees");
@@ -104,16 +112,21 @@ public class TelloApi {
     /**
      * Control command. Starts video stream on UDP port 11111.
      */
-    public CompletableFuture<Void> startVideoStream() { return connection.scheduleCommand("streamon"); }
+    public CompletableFuture<Void> startVideoStream() {
+        return connection.scheduleCommand("streamon");
+    }
 
     /**
      * Control command. Stops video stream.
      */
-    public CompletableFuture<Void> stopVideoStream() { return connection.scheduleCommand("streamoff"); }
+    public CompletableFuture<Void> stopVideoStream() {
+        return connection.scheduleCommand("streamoff");
+    }
 
     /**
      * Control command. Moves drone forward with the given distance.
      * Will throw is distance parameter is not within its bounds (20-500cm).
+     *
      * @param distance distance in cm (20-500)
      */
     public CompletableFuture<Void> goForward(int distance) {
@@ -123,6 +136,7 @@ public class TelloApi {
     /**
      * Control command. Moves drone backward with the given distance.
      * Will throw is distance parameter is not within its bounds (20-500cm).
+     *
      * @param distance distance in cm (20-500)
      */
     public CompletableFuture<Void> goBackwards(int distance) {
@@ -132,6 +146,7 @@ public class TelloApi {
     /**
      * Control command. Moves drone up with the given distance.
      * Will throw is distance parameter is not within its bounds (20-500cm).
+     *
      * @param distance distance in cm (20-500)
      */
     public CompletableFuture<Void> goUp(int distance) {
@@ -141,6 +156,7 @@ public class TelloApi {
     /**
      * Control command. Moves drone down with the given distance.
      * Will throw is distance parameter is not within its bounds (20-500cm).
+     *
      * @param distance distance in cm (20-500)
      */
     public CompletableFuture<Void> goDown(int distance) {
@@ -150,6 +166,7 @@ public class TelloApi {
     /**
      * Control command. Moves drone left with the given distance.
      * Will throw is distance parameter is not within its bounds (20-500cm).
+     *
      * @param distance distance in cm (20-500)
      */
     public CompletableFuture<Void> goLeft(int distance) {
@@ -159,6 +176,7 @@ public class TelloApi {
     /**
      * Control command. Moves drone right with the given distance.
      * Will throw is distance parameter is not within its bounds (20-500cm).
+     *
      * @param distance distance in cm (20-500)
      */
     public CompletableFuture<Void> goRight(int distance) {
@@ -168,6 +186,7 @@ public class TelloApi {
     /**
      * Control command. Rotates drone clockwise with the given degrees.
      * Will throw if the rotation parameter is not within its bounds (0-360º).
+     *
      * @param degrees degrees (0-360)
      */
     public CompletableFuture<Void> rotateClockwise(int degrees) {
@@ -177,6 +196,7 @@ public class TelloApi {
     /**
      * Control command. Rotates drone counterclockwise with the given degrees.
      * Will throw if the rotation parameter is not within its bounds (0-360º).
+     *
      * @param degrees degrees (0-360)
      */
     public CompletableFuture<Void> rotateCounterclockwise(int degrees) {

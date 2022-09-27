@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8a7478e2-d065-4ffe-8528-6081e6ba4446" name="Changes" comment="clean root pom.xml">
+    <list default="true" id="8a7478e2-d065-4ffe-8528-6081e6ba4446" name="Changes" comment="Removed CommandDispatcher.java, replaced, replaced with Connection.sendCommand method. Version bump to 1.1.2. Added documentation to TelloApi.java">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/src/main/java/io/github/pablof036/tellosdk/api/TelloApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/io/github/pablof036/tellosdk/api/TelloApi.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/implementation/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/implementation/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/implementation/src/main/java/io/github/pablof036/tellosdk/implementation/CommandDispatcher.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/implementation/src/main/java/io/github/pablof036/tellosdk/implementation/Connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/implementation/src/main/java/io/github/pablof036/tellosdk/implementation/Connection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/src/main/java/io/github/pablof036/tellosdk/implementation/StateServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/implementation/src/main/java/io/github/pablof036/tellosdk/implementation/StateServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,7 +65,8 @@
       <workItem from="1664241239391" duration="5606000" />
       <workItem from="1664247146943" duration="422000" />
       <workItem from="1664284294749" duration="103000" />
-      <workItem from="1664284667251" duration="2466000" />
+      <workItem from="1664284667251" duration="3850000" />
+      <workItem from="1664288711324" duration="1591000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commmit">
       <created>1664241382232</created>
@@ -102,7 +103,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664247318513</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Removed CommandDispatcher.java, replaced, replaced with Connection.sendCommand method. Version bump to 1.1.2. Added documentation to TelloApi.java">
+      <created>1664287149589</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1664287149589</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -124,7 +132,8 @@
     <MESSAGE value="maven central setup" />
     <MESSAGE value="version bump to 1.1.1 to fix versioning mess" />
     <MESSAGE value="clean root pom.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="clean root pom.xml" />
+    <MESSAGE value="Removed CommandDispatcher.java, replaced, replaced with Connection.sendCommand method. Version bump to 1.1.2. Added documentation to TelloApi.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed CommandDispatcher.java, replaced, replaced with Connection.sendCommand method. Version bump to 1.1.2. Added documentation to TelloApi.java" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
