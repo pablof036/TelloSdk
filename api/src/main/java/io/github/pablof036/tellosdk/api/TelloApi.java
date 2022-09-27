@@ -17,7 +17,9 @@ import java.util.function.BiConsumer;
 public class TelloApi {
 
     private final List<BiConsumer<State, Throwable>> stateListeners = new ArrayList<>();
-    private final Connection connection = new Connection((s, t) -> stateListeners.forEach(c -> c.accept(s, t)));
+    private final Connection connection = new Connection((s, t) -> {
+        stateListeners.forEach(c -> c.accept(s, t));
+    });
 
     /**
      * Opens connection with drone and enters SDK mode.
@@ -26,9 +28,9 @@ public class TelloApi {
     public CompletableFuture<Void> connect() {
         return CompletableFuture.supplyAsync(() -> {
                     connection.connect();
-                    return null;
-                }).thenCompose(p -> connection.scheduleCommand("command"))
-                .whenComplete((n, t) -> {
+                    connection.scheduleCommand("command").join();
+                    return (Void) null;
+                }).whenComplete((n, t) -> {
                     if (t != null) {
                         connection.disconnect();
                     }

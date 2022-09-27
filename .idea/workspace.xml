@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8a7478e2-d065-4ffe-8528-6081e6ba4446" name="Changes" comment="Removed CommandDispatcher.java, replaced, replaced with Connection.sendCommand method. Version bump to 1.1.2. Added documentation to TelloApi.java">
+    <list default="true" id="8a7478e2-d065-4ffe-8528-6081e6ba4446" name="Changes" comment="StateServer.java and Connection.java disconnection bugfix. TelloApi.java connection exception reporting bugfix. Bump to 1.1.13">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/src/main/java/io/github/pablof036/tellosdk/api/TelloApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/io/github/pablof036/tellosdk/api/TelloApi.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/implementation/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/implementation/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/src/main/java/io/github/pablof036/tellosdk/implementation/Command.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/implementation/src/main/java/io/github/pablof036/tellosdk/implementation/Connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/implementation/src/main/java/io/github/pablof036/tellosdk/implementation/Connection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/implementation/src/main/java/io/github/pablof036/tellosdk/implementation/StateServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/implementation/src/main/java/io/github/pablof036/tellosdk/implementation/StateServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
@@ -66,7 +67,8 @@
       <workItem from="1664247146943" duration="422000" />
       <workItem from="1664284294749" duration="103000" />
       <workItem from="1664284667251" duration="3850000" />
-      <workItem from="1664288711324" duration="1591000" />
+      <workItem from="1664288711324" duration="5094000" />
+      <workItem from="1664297219633" duration="2553000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commmit">
       <created>1664241382232</created>
@@ -110,7 +112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664287149589</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="StateServer.java and Connection.java disconnection bugfix. TelloApi.java connection exception reporting bugfix. Bump to 1.1.13">
+      <created>1664290605864</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1664290605864</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -133,7 +142,8 @@
     <MESSAGE value="version bump to 1.1.1 to fix versioning mess" />
     <MESSAGE value="clean root pom.xml" />
     <MESSAGE value="Removed CommandDispatcher.java, replaced, replaced with Connection.sendCommand method. Version bump to 1.1.2. Added documentation to TelloApi.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed CommandDispatcher.java, replaced, replaced with Connection.sendCommand method. Version bump to 1.1.2. Added documentation to TelloApi.java" />
+    <MESSAGE value="StateServer.java and Connection.java disconnection bugfix. TelloApi.java connection exception reporting bugfix. Bump to 1.1.13" />
+    <option name="LAST_COMMIT_MESSAGE" value="StateServer.java and Connection.java disconnection bugfix. TelloApi.java connection exception reporting bugfix. Bump to 1.1.13" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

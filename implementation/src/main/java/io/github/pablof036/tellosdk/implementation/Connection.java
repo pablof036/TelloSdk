@@ -31,25 +31,25 @@ public class Connection {
         } catch (UnknownHostException e) {
             throw new RuntimeException(e);
         }
+
         if (onStateReceive != null) {
             try {
                 stateServer = new StateServer(onStateReceive);
+                stateServer.start();
             } catch (SocketException e) {
                 throw new RuntimeException(e);
             }
-            stateServer.start();
         }
         connected = true;
     }
 
     public void disconnect() {
         commandSocket.disconnect();
+        commandSocket.close();
         if (stateServer != null) {
             stateServer.interrupt();
-
             try {
                 stateServer.join();
-                stateServer.disconnectSocket();
             } catch (InterruptedException e) {
                 connected = false;
                 throw new RuntimeException(e);

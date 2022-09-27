@@ -22,11 +22,6 @@ class StateServer extends Thread {
         socket.setSoTimeout(250);
     }
 
-    public void disconnectSocket() {
-        socket.disconnect();
-        socket.close();
-    }
-
     @Override
     public void run() {
         while (!Thread.interrupted()) {
