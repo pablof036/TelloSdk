@@ -94,6 +94,24 @@ public class State {
         return mapped;
     }
 
+    private double calcMagnitude3(double x, double y, double z) {
+        return Math.sqrt(Math.pow(x, 2) +  Math.pow(y, 2)+ Math.pow(z, 2));
+    }
+
+    public Double getSpeed() {
+        if (vgx == null || vgy == null || vgz == null) {
+            return null;
+        }
+        return calcMagnitude3(vgx, vgy, vgz);
+    }
+
+    public Double getAcceleration() {
+        if (agx == null || agy == null || agz == null) {
+            return null;
+        }
+        return calcMagnitude3(agx, agy, agz);
+    }
+
     public Integer getPitch() {
         return pitch;
     }

@@ -19,7 +19,7 @@ class StateServer extends Thread {
         this.onReceive = onReceive;
 
         socket = new DatagramSocket(8890);
-        socket.setSoTimeout(250);
+        socket.setSoTimeout(2000);
     }
 
     @Override
