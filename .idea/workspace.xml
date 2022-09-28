@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8a7478e2-d065-4ffe-8528-6081e6ba4446" name="Changes" comment="Fixed state parsing :)))))))))))))))))))&#10;Added disconnection callback to TelloApi.java&#10;Decoupled StateServer.java from Connection.connect,&#10;reflected changes on TelloApi.java&#10;Bump to 2.0.0">
+    <list default="true" id="8a7478e2-d065-4ffe-8528-6081e6ba4446" name="Changes" comment="Added method helper methods to get speed and acceleration in State.java. Bump to 2.1.0">
+      <change afterPath="$PROJECT_DIR$/camera/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/camera/src/main/java/io/github/pablof036/tellosdk/camera/Camera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/implementation/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/implementation/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/implementation/src/main/java/io/github/pablof036/tellosdk/implementation/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/implementation/src/main/java/io/github/pablof036/tellosdk/implementation/State.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/implementation/src/main/java/io/github/pablof036/tellosdk/implementation/StateServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/implementation/src/main/java/io/github/pablof036/tellosdk/implementation/StateServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -70,7 +69,8 @@
       <workItem from="1664303244704" duration="2012000" />
       <workItem from="1664319287041" duration="4245000" />
       <workItem from="1664324513004" duration="25000" />
-      <workItem from="1664371349898" duration="471000" />
+      <workItem from="1664371349898" duration="839000" />
+      <workItem from="1664378625594" duration="5819000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commmit">
       <created>1664241382232</created>
@@ -135,7 +135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664322811564</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Added method helper methods to get speed and acceleration in State.java. Bump to 2.1.0">
+      <created>1664371904421</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1664371904421</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -161,7 +168,8 @@
     <MESSAGE value="StateServer.java and Connection.java disconnection bugfix. TelloApi.java connection exception reporting bugfix. Bump to 1.1.13" />
     <MESSAGE value="Bugfixes. Bump to 1.1.4" />
     <MESSAGE value="Fixed state parsing :)))))))))))))))))))&#10;Added disconnection callback to TelloApi.java&#10;Decoupled StateServer.java from Connection.connect,&#10;reflected changes on TelloApi.java&#10;Bump to 2.0.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed state parsing :)))))))))))))))))))&#10;Added disconnection callback to TelloApi.java&#10;Decoupled StateServer.java from Connection.connect,&#10;reflected changes on TelloApi.java&#10;Bump to 2.0.0" />
+    <MESSAGE value="Added method helper methods to get speed and acceleration in State.java. Bump to 2.1.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added method helper methods to get speed and acceleration in State.java. Bump to 2.1.0" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
